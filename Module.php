@@ -100,7 +100,8 @@ class Module
                 if (!defined('APPLICATION_PATH')) {
                     return false;
                 }
-                if (!is_writable(APPLICATION_PATH . '/config/autoload/development.php')) {
+                $devFile = APPLICATION_PATH . '/config/autoload/development.php';
+                if (file_exists($devFile) && !is_writable($devFile)) {
                     return false;
                 }
                 return true;
